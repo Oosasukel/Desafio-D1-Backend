@@ -1,0 +1,34 @@
+name: CD
+
+on:
+  push:
+    branches:
+      - 'master'
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2.1.0
+
+      - name: Create Env File
+        id: write_file
+        uses: timheuer/base64-to-file@v1
+        with:
+          fileName: '.env'
+          encodedString: ${{ secrets.ENV_FILE }}
+
+      - name: Remove .gitignore
+        run: rm .gitignore
+
+      - name: Deploy on Heroku
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: 'desafio-d1'
+          heroku_email: 'rodrigo_gonn@hotmail.com'
+          usedocker: true
