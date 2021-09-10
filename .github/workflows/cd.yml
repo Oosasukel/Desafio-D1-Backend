@@ -26,7 +26,7 @@ jobs:
           encodedString: ${{ secrets.ENV_FILE }}
 
       - name: Copy Env File from Temporary Path
-        run: cp ${{ steps.write_file.outputs.filePath }} .env
+        run: cp ${{ steps.write_file.outputs.filePath }} ./.env
 
       - name: Listar
         run: ls
