@@ -8,6 +8,7 @@ RUN dotnet restore
 # copy everything else and build app
 COPY . .
 RUN dotnet publish -c release -o /app --no-restore /restore
+COPY .env /app
 
 # final stage/image
 FROM mcr.microsoft.com/dotnet/sdk:3.1
