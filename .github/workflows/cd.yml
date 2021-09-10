@@ -22,9 +22,11 @@ jobs:
         id: write_file
         uses: timheuer/base64-to-file@v1
         with:
-          fileDir: './'
           fileName: '.env'
           encodedString: ${{ secrets.ENV_FILE }}
+
+      - name: Copy Env File from Temporary Path
+        run: cp ${{ steps.write_file.outputs.filePath }} .env
 
       - name: Listar
         run: ls
