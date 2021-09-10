@@ -15,9 +15,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2.1.0
 
-      - name: Remove .gitignore
-        run: rm .gitignore
-
       - name: Create Env File
         id: write_file
         uses: timheuer/base64-to-file@v1
@@ -27,9 +24,6 @@ jobs:
 
       - name: Copy Env File from Temporary Path
         run: cp ${{ steps.write_file.outputs.filePath }} ./.env
-
-      - name: Listar
-        run: ls
 
       - name: Login to Heroku Container registry
         env:
