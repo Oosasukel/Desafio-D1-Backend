@@ -31,4 +31,3 @@ jobs:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           heroku_app_name: 'desafio-d1'
           heroku_email: 'rodrigo_gonn@hotmail.com'
-          usedocker: true
