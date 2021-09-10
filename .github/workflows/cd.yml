@@ -26,6 +26,9 @@ jobs:
           fileName: '.env'
           encodedString: ${{ secrets.ENV_FILE }}
 
+      - name: Listar
+        run: ls
+
       - name: Login to Heroku Container registry
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
