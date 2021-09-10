@@ -15,6 +15,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2.1.0
 
+      - name: Remove .gitignore
+        run: rm .gitignore
+
       - name: Create Env File
         id: write_file
         uses: timheuer/base64-to-file@v1
