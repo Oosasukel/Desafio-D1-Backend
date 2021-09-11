@@ -63,7 +63,11 @@ namespace backend
 
             app.UseHttpsRedirection();
 
-            app.UseCors(option => option.AllowAnyOrigin());
+            app.UseCors(option =>
+            {
+                option.AllowAnyOrigin();
+                option.AllowAnyMethod();
+            });
 
             app.UseRouting();
 
