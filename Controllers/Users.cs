@@ -21,8 +21,8 @@ namespace backend.Controllers
         }
 
         [HttpGet]
-        public ActionResult<List<User>> Get() =>
-            _userService.Get();
+        public async Task<ActionResult<Page<User>>> Get(int page, int limit) =>
+            await _userService.GetPageAsync(page, limit);
 
         [HttpGet("{id:length(24)}", Name = "GetUser")]
         public ActionResult<User> Get(string id)
@@ -48,7 +48,6 @@ namespace backend.Controllers
         [HttpPut("{id:length(24)}")]
         public IActionResult Update(string id, User user)
         {
-            Console.WriteLine("Updating");
             user.Id = id;
             var userExists = _userService.Get(id);
 
