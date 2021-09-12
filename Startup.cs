@@ -67,6 +67,7 @@ namespace backend
             {
                 option.AllowAnyOrigin();
                 option.AllowAnyMethod();
+                option.AllowAnyHeader();
             });
 
             app.UseRouting();
