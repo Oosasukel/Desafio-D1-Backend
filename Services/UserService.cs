@@ -46,6 +46,7 @@ namespace backend.Services
 
         public User Create(User user)
         {
+            user.Id = null;
             _users.InsertOne(user);
             return user;
         }
